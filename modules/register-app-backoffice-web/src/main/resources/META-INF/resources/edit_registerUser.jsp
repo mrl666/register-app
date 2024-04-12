@@ -4,6 +4,7 @@
 	<c:when test="${not empty registerUser}">
 		<portlet:actionURL var="registerUserActionURL" name="<%=MVCCommandNames.EDIT_REGISTERUSER %>">
 			<portlet:param name="redirect" value="${param.redirect}" />
+			<portlet:param name="registerUserId" value="${registerUser.registerUserId}" />
 		</portlet:actionURL>
 
 		<c:set var="editTitle" value="edit-registerUser"/>
