@@ -1,0 +1,118 @@
+<%-- Generate RegisterUser view  URL. --%>
+
+<portlet:renderURL var="viewRegisterUserURL">
+	<portlet:param name="mvcRenderCommandName"
+		value="<%=MVCCommandNames.VIEW_REGISTERUSER %>" />
+	<portlet:param name="redirect" value="${currentURL}" />
+	<portlet:param name="registerUserId" value="${entry.registerUserId}" />
+</portlet:renderURL>
+
+<c:choose>
+
+	<%-- Descriptive (list) view --%>
+
+	<c:when
+		test='${registerUsersManagementToolbarDisplayContext.getDisplayStyle().equals("list")}'>
+
+		<%-- User --%>
+
+		<liferay-ui:search-container-column-text name="name"
+			cssClass="content-column name-column title-column"
+			value="${entry.name}" />
+
+		<liferay-ui:search-container-column-text name="Surname"
+			cssClass="content-column description-column" value="${entry.surname}" />
+
+		<liferay-ui:search-container-column-text name="Lastname"
+			cssClass="content-column description-column" value="${entry.lastname}" />
+
+		<liferay-ui:search-container-column-text name="email"
+			cssClass="content-column email-column" value="${entry.email}" />
+
+		<liferay-ui:search-container-column-text name="NationalId"
+			cssClass="content-column description-column"
+			value="${entry.nationalId}" />
+
+		<liferay-ui:search-container-column-text name="description"
+			cssClass="content-column description-column"
+			value="${entry.description}" />
+
+		<liferay-ui:search-container-column-user name="author"
+			cssClass="content-column author-column" userId="${entry.userId}" />
+
+		<liferay-ui:search-container-column-date name="create-date"
+			cssClass="create-date-column text-column" property="createDate" />
+
+		<liferay-ui:search-container-column-jsp cssClass="entry-action-column"
+			path="/entry_actions.jsp" />
+	</c:when>
+
+	<%-- Card view  --%>
+
+	<c:when
+		test='${registerUsersManagementToolbarDisplayContext.getDisplayStyle().equals("icon")}'>
+
+		<%
+			row.setCssClass("lfr-asset-item");
+		%>
+
+		<liferay-ui:search-container-column-text>
+
+			<%-- Vertical card. --%>
+
+			<liferay-frontend:icon-vertical-card actionJsp="/entry_actions.jsp"
+				actionJspServletContext="<%= application %>" icon="cards2"
+				resultRow="${row}" name="${entry.getName()}"
+				url="${viewRegisterUserURL}">
+
+				<liferay-frontend:vertical-card-sticker-bottom>
+
+					<liferay-ui:user-portrait cssClass="sticker sticker-bottom"
+						userId="${entry.userId}" />
+				</liferay-frontend:vertical-card-sticker-bottom>
+
+				<liferay-frontend:vertical-card-footer>
+
+					<div class="truncate-text">
+
+						<%-- Strip HTML --%>
+
+						<%=HtmlUtil.stripHtml(entry.getDescription()) %>
+					</div>
+				</liferay-frontend:vertical-card-footer>
+			</liferay-frontend:icon-vertical-card>
+		</liferay-ui:search-container-column-text>
+	</c:when>
+
+	<%-- Table view --%>
+
+	<c:otherwise>
+
+		<liferay-ui:search-container-column-text href="${viewRegisterUserURL}"
+			name="name" value="${entry.name}" />
+
+		<liferay-ui:search-container-column-text name="surname"
+			value="${entry.surname}" />
+
+		<liferay-ui:search-container-column-text name="lastname"
+			value="${entry.lastname}" />
+
+		<liferay-ui:search-container-column-text name="email"
+			value="${entry.email}" />
+
+		<liferay-ui:search-container-column-text name="nationalId"
+			value="${entry.nationalId}" />
+
+		<liferay-ui:search-container-column-text name="description"
+			value="${entry.description}" />
+
+		<liferay-ui:search-container-column-user name="author"
+			userId="${entry.userId}" />
+
+		<liferay-ui:search-container-column-date name="create-date"
+			property="createDate" />
+
+		<liferay-ui:search-container-column-jsp name="actions"
+			path="/entry_actions.jsp" />
+	</c:otherwise>
+</c:choose>

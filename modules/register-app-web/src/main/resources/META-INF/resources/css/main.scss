@@ -1,0 +1,43 @@
+.register-app-web {
+}
+
+.container-fluid-1280 {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background color */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle elevation effect */
+}
+
+.container-fluid-1280 p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333; /* Text color */
+}
+
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-group.required label::after {
+    content: "*";
+    color: red;
+}
+
+.invalid-register {
+    display: none;
+    color: red;
+    margin-top: 5px;
+}
+
+.form-control.is-invalid {
+    border-color: red;
+}
+
+.form-control.is-invalid + .invalid-register {
+    display: block;
+}

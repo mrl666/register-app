@@ -1,0 +1,102 @@
+.register-app-backoffice-web {
+
+	h1 {
+		font-size: 1.7rem;
+		margin: 20px 0 10px 0;
+	}
+
+	h2 {
+		margin: 30px 0 10px 0;
+	}
+	
+	.lfr-search-container-wrapper {
+		a {
+			text-decoration: underline;
+		}
+		
+		.user-icon {
+			float: left;
+		}
+		
+		.user-details {
+			vertical-align: sub;
+			
+			.user-name {
+				color: inherit;
+			}
+		}
+	}
+	
+	.submission-text {
+		border: 1px solid #eee;
+		border-radius: 5px;		
+		padding: 20px;
+	}
+	
+	.registerUser-metadata,
+	.submission-metadata {
+		font-size: .9em;
+	
+		dt {
+			margin-top: 15px;
+		}
+		
+		dd {
+		
+		}				
+	}
+	
+	.edit-registerUser {
+	
+		.registerUser-description {
+			font-size: .875rem;
+			font-weight: 600;
+			
+			.reference-mark {
+				font-size: 6px;
+			}
+		}	
+	}	
+	
+}
+
+.container-fluid-1280 {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background color */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle elevation effect */
+}
+
+.container-fluid-1280 p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333; /* Text color */
+}
+
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-group.required label::after {
+    content: "*";
+    color: red;
+}
+
+.invalid-register {
+    display: none;
+    color: red;
+    margin-top: 5px;
+}
+
+.form-control.is-invalid {
+    border-color: red;
+}
+
+.form-control.is-invalid + .invalid-register {
+    display: block;
+}

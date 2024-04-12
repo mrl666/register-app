@@ -1,0 +1,10 @@
+Bundle-Name: register-app-backend-api
+Bundle-SymbolicName: register.app.backend.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	register.app.backend.exception,\
+	register.app.backend.model,\
+	register.app.backend.service,\
+	register.app.backend.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../register-app-backend-service/service.xml

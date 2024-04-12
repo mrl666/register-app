@@ -1,0 +1,4 @@
+Bundle-Name: register-app-web
+Bundle-SymbolicName: register.app.web
+Bundle-Version: 1.0.0
+Export-Package: register.app.web.constants

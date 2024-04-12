@@ -1,0 +1,4 @@
+Bundle-Name: register-app-backoffice-web
+Bundle-SymbolicName: register.app.backoffice.web
+Bundle-Version: 1.0.0
+Export-Package: register.app.backoffice.web.constants
