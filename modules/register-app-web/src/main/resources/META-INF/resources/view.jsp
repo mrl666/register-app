@@ -1,5 +1,11 @@
 <%@ include file="/init.jsp" %>
 
+    <script type="text/javascript">
+	console.log('Executing script...');
+	console.log(Liferay.Browser.isChrome());
+	console.log(Liferay.Util.Session);
+</script>
+
 <portlet:actionURL var="submitFormActionURL" name="<%=MVCCommandNames.SUBMIT_FORM%>" />
 <portlet:resourceURL id="<%=MVCCommandNames.RESOURCE_CAPTCHA%>" var="captchaResourceURL" />
 		

@@ -17,6 +17,7 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ page import="javax.portlet.WindowState"%>
 
 <%@ taglib uri="http://liferay.com/tld/captcha" prefix="liferay-captcha" %>
+<%@ page import="com.liferay.portal.kernel.captcha.Captcha"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <liferay-theme:defineObjects />

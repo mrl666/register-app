@@ -55,12 +55,12 @@ public class AddRegisterUserMVCActionCommand extends BaseMVCActionCommand {
 		RegisterUserLocalServiceUtil.addRegisterUser(themeDisplay.getScopeGroupId(), nameInput, surnameInput, lastnameInput, nationalIdInput,
 				emailInput, questionTypeInput, descriptionInput, serviceContext);
 		
-		actionResponse.setRenderParameter(
+		actionResponse.getRenderParameters().setValue(
 				"mvcRenderCommandName", MVCCommandNames.SUCCESS_PAGE);
 		
     	} catch (Exception e) {
     		e.printStackTrace();
-			actionResponse.setRenderParameter(
+    		actionResponse.getRenderParameters().setValue(
 					"mvcRenderCommandName", MVCCommandNames.ERROR_PAGE);
     	}
     }

@@ -1,17 +1,11 @@
 package register.app.web.portlet;
 
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
+import org.osgi.service.component.annotations.Component;
 import com.liferay.captcha.util.CaptchaUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCResourceCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCResourceCommand;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.portlet.ResourceRequest;
-import javax.portlet.ResourceResponse;
-
-import org.osgi.service.component.annotations.Component;
-
 import register.app.web.constants.MVCCommandNames;
 import register.app.web.constants.RegisterAppWebPortletKeys;
 

@@ -11,6 +11,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="register.app.backend.model.RegisterUser"%>
 <%@ page import="com.liferay.portal.kernel.util.WebKeys"%>
+<%@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
 
 <liferay-theme:defineObjects />
 

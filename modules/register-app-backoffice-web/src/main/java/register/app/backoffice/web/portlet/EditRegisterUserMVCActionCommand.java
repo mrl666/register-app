@@ -1,6 +1,9 @@
 package register.app.backoffice.web.portlet;
 
-import com.liferay.captcha.simplecaptcha.SimpleCaptchaImpl;
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletSession;
+import org.osgi.service.component.annotations.Component;
 import com.liferay.captcha.util.CaptchaUtil;
 import com.liferay.portal.kernel.captcha.CaptchaTextException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
@@ -10,13 +13,6 @@ import com.liferay.portal.kernel.service.ServiceContextFactory;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
-
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.PortletSession;
-
-import org.osgi.service.component.annotations.Component;
-
 import register.app.backend.model.RegisterUser;
 import register.app.backend.service.RegisterUserLocalServiceUtil;
 import register.app.backoffice.web.constants.MVCCommandNames;
@@ -46,12 +42,12 @@ public class EditRegisterUserMVCActionCommand extends BaseMVCActionCommand {
 		//captcha validation
 		String captchaTextUser = ParamUtil.getString(actionRequest, "captchaText");    		
 		PortletSession session = actionRequest.getPortletSession();
-		String captchaTextValid = (String) session.getAttribute("_register_app_backoffice_web_RegisterAppBackofficeWebPortlet_INSTANCE_udsl_CAPTCHA_TEXT");
+		//String captchaTextValid = (String) session.getAttribute("_register_app_backoffice_web_RegisterAppBackofficeWebPortlet_INSTANCE_udsl_CAPTCHA_TEXT");
 
 		ThemeDisplay themeDisplay =
 				(ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
 
-		//CaptchaUtil.check(actionRequest);
+		CaptchaUtil.check(actionRequest);
 
 //		if (!captchaTextUser.equals(captchaTextValid)) {
 //			actionRequest.setAttribute("errorCaptchaMessage", "Incorrect captcha! Please try again.");
@@ -77,14 +73,14 @@ public class EditRegisterUserMVCActionCommand extends BaseMVCActionCommand {
 		RegisterUserLocalServiceUtil.updateRegisterUser(registerUserId, themeDisplay.getScopeGroupId(), nameInput, surnameInput, lastnameInput, nationalIdInput,
 				emailInput, questionTypeInput, descriptionInput, serviceContext);
 		
-		actionResponse.setRenderParameter(
+		actionResponse.getRenderParameters().setValue(
 				"mvcRenderCommandName", MVCCommandNames.SUCCESS_PAGE);
 		
     	} catch (CaptchaTextException cte) {
     		cte.printStackTrace();
     	} catch (Exception e) {
     		e.printStackTrace();
-			actionResponse.setRenderParameter(
+    		actionResponse.getRenderParameters().setValue(
 					"mvcRenderCommandName", MVCCommandNames.ERROR_PAGE);
     	}
     }
