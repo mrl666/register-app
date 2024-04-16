@@ -14,9 +14,12 @@
 
 package register.app.backend.service;
 
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.util.tracker.ServiceTracker;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.util.OrderByComparator;
+
+import java.util.List;
+
+import register.app.backend.model.RegisterUser;
 
 /**
  * Provides the remote service utility for RegisterUser. This utility wraps
@@ -37,12 +40,12 @@ public class RegisterUserServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>register.app.backend.service.impl.RegisterUserServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
-	public static register.app.backend.model.RegisterUser addRegisterUser(
+	public static RegisterUser addRegisterUser(
 			long scopeGroupId, String nameInput, String surnameInput,
 			String lastnameInput, String nationalIdInput, String email,
 			String questionTypeInput, String descriptionInput,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException {
+		throws PortalException {
 
 		return getService().addRegisterUser(
 			scopeGroupId, nameInput, surnameInput, lastnameInput,
@@ -50,16 +53,14 @@ public class RegisterUserServiceUtil {
 			serviceContext);
 	}
 
-	public static register.app.backend.model.RegisterUser addRegisterUser(
-			register.app.backend.model.RegisterUser registerUser)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static RegisterUser addRegisterUser(RegisterUser registerUser)
+		throws PortalException {
 
 		return getService().addRegisterUser(registerUser);
 	}
 
-	public static register.app.backend.model.RegisterUser deleteRegisterUser(
-			long registerUserId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static RegisterUser deleteRegisterUser(long registerUserId)
+		throws PortalException {
 
 		return getService().deleteRegisterUser(registerUserId);
 	}
@@ -73,11 +74,9 @@ public class RegisterUserServiceUtil {
 		return getService().getOSGiServiceIdentifier();
 	}
 
-	public static java.util.List<register.app.backend.model.RegisterUser>
-		getRegisterUsersByKeywords(
-			long groupId, String keywords, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<register.app.backend.model.RegisterUser> orderByComparator) {
+	public static List<RegisterUser> getRegisterUsersByKeywords(
+		long groupId, String keywords, int start, int end,
+		OrderByComparator<RegisterUser> orderByComparator) {
 
 		return getService().getRegisterUsersByKeywords(
 			groupId, keywords, start, end, orderByComparator);
@@ -89,12 +88,12 @@ public class RegisterUserServiceUtil {
 		return getService().getRegisterUsersCountByKeywords(groupId, keywords);
 	}
 
-	public static register.app.backend.model.RegisterUser updateRegisterUser(
+	public static RegisterUser updateRegisterUser(
 			long registerUserId, long scopeGroupId, String nameInput,
 			String surnameInput, String lastnameInput, String nationalIdInput,
 			String email, String questionTypeInput, String descriptionInput,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException {
+		throws PortalException {
 
 		return getService().updateRegisterUser(
 			registerUserId, scopeGroupId, nameInput, surnameInput,
@@ -103,23 +102,9 @@ public class RegisterUserServiceUtil {
 	}
 
 	public static RegisterUserService getService() {
-		return _serviceTracker.getService();
+		return _service;
 	}
 
-	private static ServiceTracker<RegisterUserService, RegisterUserService>
-		_serviceTracker;
-
-	static {
-		Bundle bundle = FrameworkUtil.getBundle(RegisterUserService.class);
-
-		ServiceTracker<RegisterUserService, RegisterUserService>
-			serviceTracker =
-				new ServiceTracker<RegisterUserService, RegisterUserService>(
-					bundle.getBundleContext(), RegisterUserService.class, null);
-
-		serviceTracker.open();
-
-		_serviceTracker = serviceTracker;
-	}
+	private static volatile RegisterUserService _service;
 
 }

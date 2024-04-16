@@ -10,6 +10,7 @@ import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.ServiceContextFactory;
+import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -47,7 +48,7 @@ public class EditRegisterUserMVCActionCommand extends BaseMVCActionCommand {
 		ThemeDisplay themeDisplay =
 				(ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
 
-		CaptchaUtil.check(actionRequest);
+		//CaptchaUtil.check(actionRequest);
 
 //		if (!captchaTextUser.equals(captchaTextValid)) {
 //			actionRequest.setAttribute("errorCaptchaMessage", "Incorrect captcha! Please try again.");
@@ -72,6 +73,8 @@ public class EditRegisterUserMVCActionCommand extends BaseMVCActionCommand {
 		
 		RegisterUserLocalServiceUtil.updateRegisterUser(registerUserId, themeDisplay.getScopeGroupId(), nameInput, surnameInput, lastnameInput, nationalIdInput,
 				emailInput, questionTypeInput, descriptionInput, serviceContext);
+		
+	    SessionMessages.add(actionRequest, "userUpdated");
 		
 		actionResponse.getRenderParameters().setValue(
 				"mvcRenderCommandName", MVCCommandNames.SUCCESS_PAGE);

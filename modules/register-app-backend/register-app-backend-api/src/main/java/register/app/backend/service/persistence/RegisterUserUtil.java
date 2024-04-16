@@ -24,10 +24,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.util.tracker.ServiceTracker;
-
 import register.app.backend.model.RegisterUser;
 
 /**
@@ -683,25 +679,9 @@ public class RegisterUserUtil {
 	}
 
 	public static RegisterUserPersistence getPersistence() {
-		return _serviceTracker.getService();
+		return _persistence;
 	}
 
-	private static ServiceTracker
-		<RegisterUserPersistence, RegisterUserPersistence> _serviceTracker;
-
-	static {
-		Bundle bundle = FrameworkUtil.getBundle(RegisterUserPersistence.class);
-
-		ServiceTracker<RegisterUserPersistence, RegisterUserPersistence>
-			serviceTracker =
-				new ServiceTracker
-					<RegisterUserPersistence, RegisterUserPersistence>(
-						bundle.getBundleContext(),
-						RegisterUserPersistence.class, null);
-
-		serviceTracker.open();
-
-		_serviceTracker = serviceTracker;
-	}
+	private static volatile RegisterUserPersistence _persistence;
 
 }

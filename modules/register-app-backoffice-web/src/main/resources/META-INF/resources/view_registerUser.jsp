@@ -3,8 +3,9 @@
 <div class="container-fluid-1280">
 
 	<h2><liferay-ui:message key="registerUser-information" /></h2>
-
-	<h1>${registerUser.name}</h1>
+	
+	<h3>Name:</h3>
+	<h3>${registerUser.name}</h3>
 	
 	<div class="registerUser-metadata">
 

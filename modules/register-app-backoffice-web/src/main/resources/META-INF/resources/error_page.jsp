@@ -7,6 +7,6 @@
 		<portlet:param name="mvcPath" value="" />
 	</portlet:renderURL>
 
-	<a href="${viewURL}" class="btn btn-primary">Home</a>
+	<a href="${viewURL}" class="btn btn-primary">List</a>
 
 </div>

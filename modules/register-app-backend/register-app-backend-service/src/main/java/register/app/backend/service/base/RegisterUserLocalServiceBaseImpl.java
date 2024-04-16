@@ -46,14 +46,18 @@ import com.liferay.portal.kernel.util.PortalUtil;
 
 import java.io.Serializable;
 
+import java.lang.reflect.Field;
+
 import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
 import register.app.backend.model.RegisterUser;
 import register.app.backend.service.RegisterUserLocalService;
+import register.app.backend.service.RegisterUserLocalServiceUtil;
 import register.app.backend.service.persistence.RegisterUserPersistence;
 
 /**
@@ -74,7 +78,7 @@ public abstract class RegisterUserLocalServiceBaseImpl
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Use <code>RegisterUserLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>register.app.backend.service.RegisterUserLocalServiceUtil</code>.
+	 * Never modify or reference this class directly. Use <code>RegisterUserLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>RegisterUserLocalServiceUtil</code>.
 	 */
 
 	/**
@@ -499,6 +503,11 @@ public abstract class RegisterUserLocalServiceBaseImpl
 		return registerUserPersistence.update(registerUser);
 	}
 
+	@Deactivate
+	protected void deactivate() {
+		_setLocalServiceUtilService(null);
+	}
+
 	@Override
 	public Class<?>[] getAopInterfaces() {
 		return new Class<?>[] {
@@ -510,6 +519,8 @@ public abstract class RegisterUserLocalServiceBaseImpl
 	@Override
 	public void setAopProxy(Object aopProxy) {
 		registerUserLocalService = (RegisterUserLocalService)aopProxy;
+
+		_setLocalServiceUtilService(registerUserLocalService);
 	}
 
 	/**
@@ -551,6 +562,22 @@ public abstract class RegisterUserLocalServiceBaseImpl
 		}
 		catch (Exception exception) {
 			throw new SystemException(exception);
+		}
+	}
+
+	private void _setLocalServiceUtilService(
+		RegisterUserLocalService registerUserLocalService) {
+
+		try {
+			Field field = RegisterUserLocalServiceUtil.class.getDeclaredField(
+				"_service");
+
+			field.setAccessible(true);
+
+			field.set(null, registerUserLocalService);
+		}
+		catch (ReflectiveOperationException reflectiveOperationException) {
+			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
 

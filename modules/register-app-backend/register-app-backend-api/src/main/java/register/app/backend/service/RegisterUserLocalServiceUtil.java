@@ -14,9 +14,16 @@
 
 package register.app.backend.service;
 
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.util.tracker.ServiceTracker;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.model.PersistedModel;
+import com.liferay.portal.kernel.util.OrderByComparator;
+
+import java.io.Serializable;
+
+import java.util.List;
+
+import register.app.backend.model.RegisterUser;
 
 /**
  * Provides the local service utility for RegisterUser. This utility wraps
@@ -37,12 +44,12 @@ public class RegisterUserLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>register.app.backend.service.impl.RegisterUserLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
-	public static register.app.backend.model.RegisterUser addRegisterUser(
+	public static RegisterUser addRegisterUser(
 			long scopeGroupId, String nameInput, String surnameInput,
 			String lastnameInput, String nationalIdInput, String emailInput,
 			String questionTypeInput, String descriptionInput,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException {
+		throws PortalException {
 
 		return getService().addRegisterUser(
 			scopeGroupId, nameInput, surnameInput, lastnameInput,
@@ -60,18 +67,16 @@ public class RegisterUserLocalServiceUtil {
 	 * @param registerUser the register user
 	 * @return the register user that was added
 	 */
-	public static register.app.backend.model.RegisterUser addRegisterUser(
-		register.app.backend.model.RegisterUser registerUser) {
-
+	public static RegisterUser addRegisterUser(RegisterUser registerUser) {
 		return getService().addRegisterUser(registerUser);
 	}
 
 	/**
 	 * @throws PortalException
 	 */
-	public static com.liferay.portal.kernel.model.PersistedModel
-			createPersistedModel(java.io.Serializable primaryKeyObj)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static PersistedModel createPersistedModel(
+			Serializable primaryKeyObj)
+		throws PortalException {
 
 		return getService().createPersistedModel(primaryKeyObj);
 	}
@@ -82,19 +87,16 @@ public class RegisterUserLocalServiceUtil {
 	 * @param registerUserId the primary key for the new register user
 	 * @return the new register user
 	 */
-	public static register.app.backend.model.RegisterUser createRegisterUser(
-		long registerUserId) {
-
+	public static RegisterUser createRegisterUser(long registerUserId) {
 		return getService().createRegisterUser(registerUserId);
 	}
 
 	/**
 	 * @throws PortalException
 	 */
-	public static com.liferay.portal.kernel.model.PersistedModel
-			deletePersistedModel(
-				com.liferay.portal.kernel.model.PersistedModel persistedModel)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static PersistedModel deletePersistedModel(
+			PersistedModel persistedModel)
+		throws PortalException {
 
 		return getService().deletePersistedModel(persistedModel);
 	}
@@ -110,9 +112,8 @@ public class RegisterUserLocalServiceUtil {
 	 * @return the register user that was removed
 	 * @throws PortalException if a register user with the primary key could not be found
 	 */
-	public static register.app.backend.model.RegisterUser deleteRegisterUser(
-			long registerUserId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static RegisterUser deleteRegisterUser(long registerUserId)
+		throws PortalException {
 
 		return getService().deleteRegisterUser(registerUserId);
 	}
@@ -128,16 +129,13 @@ public class RegisterUserLocalServiceUtil {
 	 * @return the register user that was removed
 	 * @throws PortalException
 	 */
-	public static register.app.backend.model.RegisterUser deleteRegisterUser(
-			register.app.backend.model.RegisterUser registerUser)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static RegisterUser deleteRegisterUser(RegisterUser registerUser)
+		throws PortalException {
 
 		return getService().deleteRegisterUser(registerUser);
 	}
 
-	public static com.liferay.portal.kernel.dao.orm.DynamicQuery
-		dynamicQuery() {
-
+	public static DynamicQuery dynamicQuery() {
 		return getService().dynamicQuery();
 	}
 
@@ -147,9 +145,7 @@ public class RegisterUserLocalServiceUtil {
 	 * @param dynamicQuery the dynamic query
 	 * @return the matching rows
 	 */
-	public static <T> java.util.List<T> dynamicQuery(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
-
+	public static <T> List<T> dynamicQuery(DynamicQuery dynamicQuery) {
 		return getService().dynamicQuery(dynamicQuery);
 	}
 
@@ -165,9 +161,8 @@ public class RegisterUserLocalServiceUtil {
 	 * @param end the upper bound of the range of model instances (not inclusive)
 	 * @return the range of matching rows
 	 */
-	public static <T> java.util.List<T> dynamicQuery(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
-		int end) {
+	public static <T> List<T> dynamicQuery(
+		DynamicQuery dynamicQuery, int start, int end) {
 
 		return getService().dynamicQuery(dynamicQuery, start, end);
 	}
@@ -185,10 +180,9 @@ public class RegisterUserLocalServiceUtil {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching rows
 	 */
-	public static <T> java.util.List<T> dynamicQuery(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
-		int end,
-		com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
+	public static <T> List<T> dynamicQuery(
+		DynamicQuery dynamicQuery, int start, int end,
+		OrderByComparator<T> orderByComparator) {
 
 		return getService().dynamicQuery(
 			dynamicQuery, start, end, orderByComparator);
@@ -200,9 +194,7 @@ public class RegisterUserLocalServiceUtil {
 	 * @param dynamicQuery the dynamic query
 	 * @return the number of rows matching the dynamic query
 	 */
-	public static long dynamicQueryCount(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
-
+	public static long dynamicQueryCount(DynamicQuery dynamicQuery) {
 		return getService().dynamicQueryCount(dynamicQuery);
 	}
 
@@ -214,15 +206,13 @@ public class RegisterUserLocalServiceUtil {
 	 * @return the number of rows matching the dynamic query
 	 */
 	public static long dynamicQueryCount(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+		DynamicQuery dynamicQuery,
 		com.liferay.portal.kernel.dao.orm.Projection projection) {
 
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static register.app.backend.model.RegisterUser fetchRegisterUser(
-		long registerUserId) {
-
+	public static RegisterUser fetchRegisterUser(long registerUserId) {
 		return getService().fetchRegisterUser(registerUserId);
 	}
 
@@ -233,8 +223,8 @@ public class RegisterUserLocalServiceUtil {
 	 * @param groupId the primary key of the group
 	 * @return the matching register user, or <code>null</code> if a matching register user could not be found
 	 */
-	public static register.app.backend.model.RegisterUser
-		fetchRegisterUserByUuidAndGroupId(String uuid, long groupId) {
+	public static RegisterUser fetchRegisterUserByUuidAndGroupId(
+		String uuid, long groupId) {
 
 		return getService().fetchRegisterUserByUuidAndGroupId(uuid, groupId);
 	}
@@ -272,9 +262,8 @@ public class RegisterUserLocalServiceUtil {
 	/**
 	 * @throws PortalException
 	 */
-	public static com.liferay.portal.kernel.model.PersistedModel
-			getPersistedModel(java.io.Serializable primaryKeyObj)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static PersistedModel getPersistedModel(Serializable primaryKeyObj)
+		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
 	}
@@ -286,9 +275,8 @@ public class RegisterUserLocalServiceUtil {
 	 * @return the register user
 	 * @throws PortalException if a register user with the primary key could not be found
 	 */
-	public static register.app.backend.model.RegisterUser getRegisterUser(
-			long registerUserId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static RegisterUser getRegisterUser(long registerUserId)
+		throws PortalException {
 
 		return getService().getRegisterUser(registerUserId);
 	}
@@ -301,9 +289,9 @@ public class RegisterUserLocalServiceUtil {
 	 * @return the matching register user
 	 * @throws PortalException if a matching register user could not be found
 	 */
-	public static register.app.backend.model.RegisterUser
-			getRegisterUserByUuidAndGroupId(String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static RegisterUser getRegisterUserByUuidAndGroupId(
+			String uuid, long groupId)
+		throws PortalException {
 
 		return getService().getRegisterUserByUuidAndGroupId(uuid, groupId);
 	}
@@ -319,17 +307,13 @@ public class RegisterUserLocalServiceUtil {
 	 * @param end the upper bound of the range of register users (not inclusive)
 	 * @return the range of register users
 	 */
-	public static java.util.List<register.app.backend.model.RegisterUser>
-		getRegisterUsers(int start, int end) {
-
+	public static List<RegisterUser> getRegisterUsers(int start, int end) {
 		return getService().getRegisterUsers(start, end);
 	}
 
-	public static java.util.List<register.app.backend.model.RegisterUser>
-		getRegisterUsersByKeywords(
-			long groupId, String keywords, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<register.app.backend.model.RegisterUser> orderByComparator) {
+	public static List<RegisterUser> getRegisterUsersByKeywords(
+		long groupId, String keywords, int start, int end,
+		OrderByComparator<RegisterUser> orderByComparator) {
 
 		return getService().getRegisterUsersByKeywords(
 			groupId, keywords, start, end, orderByComparator);
@@ -342,8 +326,8 @@ public class RegisterUserLocalServiceUtil {
 	 * @param companyId the primary key of the company
 	 * @return the matching register users, or an empty list if no matches were found
 	 */
-	public static java.util.List<register.app.backend.model.RegisterUser>
-		getRegisterUsersByUuidAndCompanyId(String uuid, long companyId) {
+	public static List<RegisterUser> getRegisterUsersByUuidAndCompanyId(
+		String uuid, long companyId) {
 
 		return getService().getRegisterUsersByUuidAndCompanyId(uuid, companyId);
 	}
@@ -358,11 +342,9 @@ public class RegisterUserLocalServiceUtil {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the range of matching register users, or an empty list if no matches were found
 	 */
-	public static java.util.List<register.app.backend.model.RegisterUser>
-		getRegisterUsersByUuidAndCompanyId(
-			String uuid, long companyId, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<register.app.backend.model.RegisterUser> orderByComparator) {
+	public static List<RegisterUser> getRegisterUsersByUuidAndCompanyId(
+		String uuid, long companyId, int start, int end,
+		OrderByComparator<RegisterUser> orderByComparator) {
 
 		return getService().getRegisterUsersByUuidAndCompanyId(
 			uuid, companyId, start, end, orderByComparator);
@@ -383,13 +365,13 @@ public class RegisterUserLocalServiceUtil {
 		return getService().getRegisterUsersCountByKeywords(groupId, keywords);
 	}
 
-	public static register.app.backend.model.RegisterUser updateRegisterUser(
+	public static RegisterUser updateRegisterUser(
 			long registerUserId, long scopeGroupId, String nameInput,
 			String surnameInput, String lastnameInput, String nationalIdInput,
 			String emailInput, String questionTypeInput,
 			String descriptionInput,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException {
+		throws PortalException {
 
 		return getService().updateRegisterUser(
 			registerUserId, scopeGroupId, nameInput, surnameInput,
@@ -407,32 +389,14 @@ public class RegisterUserLocalServiceUtil {
 	 * @param registerUser the register user
 	 * @return the register user that was updated
 	 */
-	public static register.app.backend.model.RegisterUser updateRegisterUser(
-		register.app.backend.model.RegisterUser registerUser) {
-
+	public static RegisterUser updateRegisterUser(RegisterUser registerUser) {
 		return getService().updateRegisterUser(registerUser);
 	}
 
 	public static RegisterUserLocalService getService() {
-		return _serviceTracker.getService();
+		return _service;
 	}
 
-	private static ServiceTracker
-		<RegisterUserLocalService, RegisterUserLocalService> _serviceTracker;
-
-	static {
-		Bundle bundle = FrameworkUtil.getBundle(RegisterUserLocalService.class);
-
-		ServiceTracker<RegisterUserLocalService, RegisterUserLocalService>
-			serviceTracker =
-				new ServiceTracker
-					<RegisterUserLocalService, RegisterUserLocalService>(
-						bundle.getBundleContext(),
-						RegisterUserLocalService.class, null);
-
-		serviceTracker.open();
-
-		_serviceTracker = serviceTracker;
-	}
+	private static volatile RegisterUserLocalService _service;
 
 }

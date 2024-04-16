@@ -5,6 +5,9 @@ import javax.portlet.ActionResponse;
 import javax.portlet.PortletSession;
 import org.osgi.service.component.annotations.Component;
 import com.liferay.captcha.util.CaptchaUtil;
+import com.liferay.portal.kernel.captcha.Captcha;
+import com.liferay.portal.kernel.captcha.CaptchaConfigurationException;
+import com.liferay.portal.kernel.captcha.CaptchaException;
 import com.liferay.portal.kernel.captcha.CaptchaTextException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
@@ -41,7 +44,9 @@ public class SubmitFormMVCActionCommand extends BaseMVCActionCommand {
 //        throw new CaptchaTextException();
 //      }
       
-      //CaptchaUtil.check(actionRequest);
+      String captchaText = (String) actionRequest.getPortletSession().getAttribute(WebKeys.CAPTCHA_TEXT);
+      Captcha c = CaptchaUtil.getCaptcha();
+      c.check(actionRequest);
 
       // get form values
       String nameInput = ParamUtil.getString(actionRequest, "name");
@@ -67,10 +72,18 @@ public class SubmitFormMVCActionCommand extends BaseMVCActionCommand {
 
       actionResponse.getRenderParameters().setValue("mvcRenderCommandName", MVCCommandNames.SUCCESS_PAGE);
 
+    } catch (CaptchaConfigurationException cte) {
+      // Error message
+      actionRequest.setAttribute("errorCaptchaMessage", "Captcha Configuration Exception! Please try again.");
+      cte.printStackTrace();
     } catch (CaptchaTextException cte) {
       // Error message
       actionRequest.setAttribute("errorCaptchaMessage", "Incorrect captcha! Please try again.");
       cte.printStackTrace();
+   } catch (CaptchaException cte) {
+     // Error message
+     actionRequest.setAttribute("errorCaptchaMessage", "Captcha Exception! Please try again.");
+     cte.printStackTrace();
     } catch (Exception e) {
       // Error message
       SessionErrors.add(actionRequest, "errorMessage");

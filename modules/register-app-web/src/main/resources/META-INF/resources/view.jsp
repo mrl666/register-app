@@ -1,11 +1,5 @@
 <%@ include file="/init.jsp" %>
 
-    <script type="text/javascript">
-	console.log('Executing script...');
-	console.log(Liferay.Browser.isChrome());
-	console.log(Liferay.Util.Session);
-</script>
-
 <portlet:actionURL var="submitFormActionURL" name="<%=MVCCommandNames.SUBMIT_FORM%>" />
 <portlet:resourceURL id="<%=MVCCommandNames.RESOURCE_CAPTCHA%>" var="captchaResourceURL" />
 		
@@ -97,9 +91,9 @@
                <div class="form-group">
 					<liferay-captcha:captcha url="${captchaResourceURL}" />
 					<c:if test="${not empty fn:trim(errorCaptchaMessage)}">
-						<p class="font-bold font-15 color-error mb-0 mt-15">
-							<liferay-ui:message key="${errorCaptchaMessage}" />
-						</p>
+						<div class="alert alert-danger" role="alert">
+						    <liferay-ui:message key="${errorCaptchaMessage}" />
+						</div>
 					</c:if>
                </div>
                
