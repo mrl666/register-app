@@ -10,8 +10,10 @@ import com.liferay.portal.kernel.dao.search.SearchContainer;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
 import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
+import com.liferay.portal.kernel.portlet.LiferayPortletURL;
 import com.liferay.portal.kernel.portlet.PortalPreferences;
 import com.liferay.portal.kernel.portlet.PortletPreferencesFactoryUtil;
+import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
 import com.liferay.portal.kernel.portlet.PortletURLUtil;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ParamUtil;
@@ -21,6 +23,7 @@ import com.liferay.portal.kernel.util.WebKeys;
 import java.util.List;
 
 import javax.portlet.PortletException;
+import javax.portlet.PortletRequest;
 import javax.portlet.PortletURL;
 import javax.servlet.http.HttpServletRequest;
 
@@ -56,13 +59,11 @@ public CreationMenu getCreationMenu() {
 	// Create the menu.
 
 	return new CreationMenu() {
+	  
 		{
 			addDropdownItem(
 				dropdownItem -> {
-					dropdownItem.setHref(
-						liferayPortletResponse.createRenderURL(),
-						"mvcRenderCommandName", MVCCommandNames.VIEW_REGISTERUSERS,
-						"redirect", currentURLObj.toString());
+					dropdownItem.setHref("/web/guest/home");
 					dropdownItem.setLabel(
 						LanguageUtil.get(request, "add-registeruser"));
 				});

@@ -81,7 +81,7 @@ public class ViewRegisterUserMVCRenderCommand implements MVCRenderCommand {
 		// search engine  to get localized sort options.
 
 		String orderByCol =
-			ParamUtil.getString(renderRequest, "orderByCol", "nationalId");
+			ParamUtil.getString(renderRequest, "orderByCol", "name");
 		String orderByType =
 			ParamUtil.getString(renderRequest, "orderByType", "asc");
 
@@ -105,7 +105,7 @@ public class ViewRegisterUserMVCRenderCommand implements MVCRenderCommand {
 		// Set request attributes.
 		renderRequest.setAttribute("registerUsers", registerUsers);
 		renderRequest.setAttribute(
-			"RegisterUserCount", RegisterUserLocalServiceUtil.getRegisterUsersCountByKeywords(
+			"registerUserCount", RegisterUserLocalServiceUtil.getRegisterUsersCountByKeywords(
 				themeDisplay.getScopeGroupId(), keywords));
 
 	}

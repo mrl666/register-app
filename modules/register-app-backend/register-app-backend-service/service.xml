@@ -39,6 +39,9 @@
 		</order>
 		
 		<!-- Reference to Group entity service -->
+        <finder name="Name" return-type="Collection">
+        	<finder-column name="name"></finder-column>
+        </finder>
 
 		<reference entity="Group" package-path="com.liferay.portal"></reference>
 

@@ -390,6 +390,149 @@ public interface RegisterUserPersistence extends BasePersistence<RegisterUser> {
 	public int countByUuid_C(String uuid, long companyId);
 
 	/**
+	 * Returns all the register users where name = &#63;.
+	 *
+	 * @param name the name
+	 * @return the matching register users
+	 */
+	public java.util.List<RegisterUser> findByName(String name);
+
+	/**
+	 * Returns a range of all the register users where name = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RegisterUserModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param start the lower bound of the range of register users
+	 * @param end the upper bound of the range of register users (not inclusive)
+	 * @return the range of matching register users
+	 */
+	public java.util.List<RegisterUser> findByName(
+		String name, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the register users where name = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RegisterUserModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param start the lower bound of the range of register users
+	 * @param end the upper bound of the range of register users (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching register users
+	 */
+	public java.util.List<RegisterUser> findByName(
+		String name, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<RegisterUser>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the register users where name = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RegisterUserModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param start the lower bound of the range of register users
+	 * @param end the upper bound of the range of register users (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching register users
+	 */
+	public java.util.List<RegisterUser> findByName(
+		String name, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<RegisterUser>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first register user in the ordered set where name = &#63;.
+	 *
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching register user
+	 * @throws NoSuchRegisterUserException if a matching register user could not be found
+	 */
+	public RegisterUser findByName_First(
+			String name,
+			com.liferay.portal.kernel.util.OrderByComparator<RegisterUser>
+				orderByComparator)
+		throws NoSuchRegisterUserException;
+
+	/**
+	 * Returns the first register user in the ordered set where name = &#63;.
+	 *
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching register user, or <code>null</code> if a matching register user could not be found
+	 */
+	public RegisterUser fetchByName_First(
+		String name,
+		com.liferay.portal.kernel.util.OrderByComparator<RegisterUser>
+			orderByComparator);
+
+	/**
+	 * Returns the last register user in the ordered set where name = &#63;.
+	 *
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching register user
+	 * @throws NoSuchRegisterUserException if a matching register user could not be found
+	 */
+	public RegisterUser findByName_Last(
+			String name,
+			com.liferay.portal.kernel.util.OrderByComparator<RegisterUser>
+				orderByComparator)
+		throws NoSuchRegisterUserException;
+
+	/**
+	 * Returns the last register user in the ordered set where name = &#63;.
+	 *
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching register user, or <code>null</code> if a matching register user could not be found
+	 */
+	public RegisterUser fetchByName_Last(
+		String name,
+		com.liferay.portal.kernel.util.OrderByComparator<RegisterUser>
+			orderByComparator);
+
+	/**
+	 * Returns the register users before and after the current register user in the ordered set where name = &#63;.
+	 *
+	 * @param registerUserId the primary key of the current register user
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next register user
+	 * @throws NoSuchRegisterUserException if a register user with the primary key could not be found
+	 */
+	public RegisterUser[] findByName_PrevAndNext(
+			long registerUserId, String name,
+			com.liferay.portal.kernel.util.OrderByComparator<RegisterUser>
+				orderByComparator)
+		throws NoSuchRegisterUserException;
+
+	/**
+	 * Removes all the register users where name = &#63; from the database.
+	 *
+	 * @param name the name
+	 */
+	public void removeByName(String name);
+
+	/**
+	 * Returns the number of register users where name = &#63;.
+	 *
+	 * @param name the name
+	 * @return the number of matching register users
+	 */
+	public int countByName(String name);
+
+	/**
 	 * Caches the register user in the entity cache if it is enabled.
 	 *
 	 * @param registerUser the register user

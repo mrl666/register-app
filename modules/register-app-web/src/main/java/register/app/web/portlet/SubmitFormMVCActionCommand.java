@@ -2,7 +2,10 @@ package register.app.web.portlet;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
+import javax.portlet.PortletURL;
+import javax.portlet.RenderRequest;
 import org.osgi.service.component.annotations.Component;
 import com.liferay.captcha.util.CaptchaUtil;
 import com.liferay.portal.kernel.captcha.Captcha;
@@ -18,10 +21,13 @@ import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portlet.LiferayPortletUtil;
 import register.app.backend.model.RegisterUser;
 import register.app.backend.service.RegisterUserLocalServiceUtil;
 import register.app.web.constants.MVCCommandNames;
 import register.app.web.constants.RegisterAppWebPortletKeys;
+import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
+import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
 
 @Component(immediate = true,
     property = {"javax.portlet.name=" + RegisterAppWebPortletKeys.REGISTERAPPWEB,

@@ -88,26 +88,6 @@ public class RegisterUserServiceSoap {
 		}
 	}
 
-	public static register.app.backend.model.RegisterUserSoap addRegisterUser(
-			register.app.backend.model.RegisterUserSoap registerUser)
-		throws RemoteException {
-
-		try {
-			register.app.backend.model.RegisterUser returnValue =
-				RegisterUserServiceUtil.addRegisterUser(
-					register.app.backend.model.impl.RegisterUserModelImpl.
-						toModel(registerUser));
-
-			return register.app.backend.model.RegisterUserSoap.toSoapModel(
-				returnValue);
-		}
-		catch (Exception exception) {
-			_log.error(exception, exception);
-
-			throw new RemoteException(exception.getMessage());
-		}
-	}
-
 	public static long getRegisterUsersCountByKeywords(
 			long groupId, String keywords)
 		throws RemoteException {
@@ -184,6 +164,24 @@ public class RegisterUserServiceSoap {
 					descriptionInput, serviceContext);
 
 			return register.app.backend.model.RegisterUserSoap.toSoapModel(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	public static register.app.backend.model.RegisterUserSoap[] findByName(
+			String name)
+		throws RemoteException {
+
+		try {
+			java.util.List<register.app.backend.model.RegisterUser>
+				returnValue = RegisterUserServiceUtil.findByName(name);
+
+			return register.app.backend.model.RegisterUserSoap.toSoapModels(
 				returnValue);
 		}
 		catch (Exception exception) {

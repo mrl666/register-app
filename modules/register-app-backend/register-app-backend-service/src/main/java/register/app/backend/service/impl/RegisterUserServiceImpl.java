@@ -16,6 +16,7 @@ package register.app.backend.service.impl;
 
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.OrderByComparator;
 
@@ -59,12 +60,6 @@ public class RegisterUserServiceImpl extends RegisterUserServiceBaseImpl {
 			return registerUserLocalService.addRegisterUser(scopeGroupId, nameInput, surnameInput, lastnameInput,
 					nationalIdInput, email, questionTypeInput, descriptionInput, serviceContext);
 		}
-
-	@Override
-	public RegisterUser addRegisterUser(RegisterUser registerUser) throws PortalException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public long getRegisterUsersCountByKeywords(long groupId, String keywords) {
 
@@ -97,5 +92,11 @@ public class RegisterUserServiceImpl extends RegisterUserServiceBaseImpl {
 		return registerUserLocalService.updateRegisterUser(registerUserId, scopeGroupId, nameInput, surnameInput, lastnameInput,
 				nationalIdInput, email, questionTypeInput, descriptionInput, serviceContext);
 	}
+	
+    @Override
+    @JSONWebService
+    public List<RegisterUser> findByName(String name) {
+      return registerUserLocalService.findByName(name);
+    }
 
 }

@@ -97,47 +97,6 @@ public class RegisterUserServiceHttp {
 		}
 	}
 
-	public static register.app.backend.model.RegisterUser addRegisterUser(
-			HttpPrincipal httpPrincipal,
-			register.app.backend.model.RegisterUser registerUser)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		try {
-			MethodKey methodKey = new MethodKey(
-				RegisterUserServiceUtil.class, "addRegisterUser",
-				_addRegisterUserParameterTypes1);
-
-			MethodHandler methodHandler = new MethodHandler(
-				methodKey, registerUser);
-
-			Object returnObj = null;
-
-			try {
-				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
-			}
-			catch (Exception exception) {
-				if (exception instanceof
-						com.liferay.portal.kernel.exception.PortalException) {
-
-					throw (com.liferay.portal.kernel.exception.PortalException)
-						exception;
-				}
-
-				throw new com.liferay.portal.kernel.exception.SystemException(
-					exception);
-			}
-
-			return (register.app.backend.model.RegisterUser)returnObj;
-		}
-		catch (com.liferay.portal.kernel.exception.SystemException
-					systemException) {
-
-			_log.error(systemException, systemException);
-
-			throw systemException;
-		}
-	}
-
 	public static long getRegisterUsersCountByKeywords(
 		HttpPrincipal httpPrincipal, long groupId, String keywords) {
 
@@ -145,7 +104,7 @@ public class RegisterUserServiceHttp {
 			MethodKey methodKey = new MethodKey(
 				RegisterUserServiceUtil.class,
 				"getRegisterUsersCountByKeywords",
-				_getRegisterUsersCountByKeywordsParameterTypes2);
+				_getRegisterUsersCountByKeywordsParameterTypes1);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, groupId, keywords);
@@ -181,7 +140,7 @@ public class RegisterUserServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				RegisterUserServiceUtil.class, "getRegisterUsersByKeywords",
-				_getRegisterUsersByKeywordsParameterTypes3);
+				_getRegisterUsersByKeywordsParameterTypes2);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, groupId, keywords, start, end, orderByComparator);
@@ -215,7 +174,7 @@ public class RegisterUserServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				RegisterUserServiceUtil.class, "deleteRegisterUser",
-				_deleteRegisterUserParameterTypes4);
+				_deleteRegisterUserParameterTypes3);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, registerUserId);
@@ -259,7 +218,7 @@ public class RegisterUserServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				RegisterUserServiceUtil.class, "updateRegisterUser",
-				_updateRegisterUserParameterTypes5);
+				_updateRegisterUserParameterTypes4);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, registerUserId, scopeGroupId, nameInput,
@@ -294,6 +253,38 @@ public class RegisterUserServiceHttp {
 		}
 	}
 
+	public static java.util.List<register.app.backend.model.RegisterUser>
+		findByName(HttpPrincipal httpPrincipal, String name) {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				RegisterUserServiceUtil.class, "findByName",
+				_findByNameParameterTypes5);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey, name);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (java.util.List<register.app.backend.model.RegisterUser>)
+				returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(
 		RegisterUserServiceHttp.class);
 
@@ -303,24 +294,25 @@ public class RegisterUserServiceHttp {
 			String.class, String.class, String.class,
 			com.liferay.portal.kernel.service.ServiceContext.class
 		};
-	private static final Class<?>[] _addRegisterUserParameterTypes1 =
-		new Class[] {register.app.backend.model.RegisterUser.class};
 	private static final Class<?>[]
-		_getRegisterUsersCountByKeywordsParameterTypes2 = new Class[] {
+		_getRegisterUsersCountByKeywordsParameterTypes1 = new Class[] {
 			long.class, String.class
 		};
-	private static final Class<?>[] _getRegisterUsersByKeywordsParameterTypes3 =
+	private static final Class<?>[] _getRegisterUsersByKeywordsParameterTypes2 =
 		new Class[] {
 			long.class, String.class, int.class, int.class,
 			com.liferay.portal.kernel.util.OrderByComparator.class
 		};
-	private static final Class<?>[] _deleteRegisterUserParameterTypes4 =
+	private static final Class<?>[] _deleteRegisterUserParameterTypes3 =
 		new Class[] {long.class};
-	private static final Class<?>[] _updateRegisterUserParameterTypes5 =
+	private static final Class<?>[] _updateRegisterUserParameterTypes4 =
 		new Class[] {
 			long.class, long.class, String.class, String.class, String.class,
 			String.class, String.class, String.class, String.class,
 			com.liferay.portal.kernel.service.ServiceContext.class
 		};
+	private static final Class<?>[] _findByNameParameterTypes5 = new Class[] {
+		String.class
+	};
 
 }

@@ -61,11 +61,11 @@ public interface RegisterUserService extends BaseService {
 			ServiceContext serviceContext)
 		throws PortalException;
 
-	public RegisterUser addRegisterUser(RegisterUser registerUser)
-		throws PortalException;
-
 	public RegisterUser deleteRegisterUser(long registerUserId)
 		throws PortalException;
+
+	@JSONWebService
+	public List<RegisterUser> findByName(String name);
 
 	/**
 	 * Returns the OSGi service identifier.

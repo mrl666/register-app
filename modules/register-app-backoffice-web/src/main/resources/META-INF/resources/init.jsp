@@ -20,6 +20,13 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ page import="com.liferay.portal.kernel.captcha.Captcha"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<%@ taglib prefix="clay" uri="http://liferay.com/tld/clay" %>
+
 <liferay-theme:defineObjects />
 
 <portlet:defineObjects />
+
+<%
+    String targetPortletNamespace = renderResponse.getNamespace();
+	System.out.println(targetPortletNamespace);
+%>

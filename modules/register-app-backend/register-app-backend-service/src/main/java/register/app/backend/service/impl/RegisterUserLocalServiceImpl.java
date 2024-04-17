@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.dao.orm.Disjunction;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.model.Group;
 import com.liferay.portal.kernel.model.ResourceConstants;
 import com.liferay.portal.kernel.model.User;
@@ -64,7 +65,8 @@ public class RegisterUserLocalServiceImpl extends RegisterUserLocalServiceBaseIm
 		final User user = userLocalService.getUser(userId);
 
 		long entryId = counterLocalService.increment(RegisterUser.class.getName());
-		RegisterUser registerUser = new RegisterUserImpl();
+		//RegisterUser registerUser = new RegisterUserImpl();
+		RegisterUser registerUser = super.createRegisterUser(entryId);
 
 		//userid, companyId, username
 		registerUser.setCreateDate(serviceContext.getCreateDate(new Date()));
@@ -103,6 +105,10 @@ public class RegisterUserLocalServiceImpl extends RegisterUserLocalServiceBaseIm
 			Disjunction disjunctionQuery = RestrictionsFactoryUtil.disjunction();
 			disjunctionQuery.add(RestrictionsFactoryUtil.like("nationalId", "%" + keywords + "%"));
 			disjunctionQuery.add(RestrictionsFactoryUtil.like("description", "%" + keywords + "%"));
+			disjunctionQuery.add(RestrictionsFactoryUtil.like("name", "%" + keywords + "%"));
+			disjunctionQuery.add(RestrictionsFactoryUtil.like("surname", "%" + keywords + "%"));
+			disjunctionQuery.add(RestrictionsFactoryUtil.like("lastname", "%" + keywords + "%"));
+			disjunctionQuery.add(RestrictionsFactoryUtil.like("email", "%" + keywords + "%"));
 			dynamicQuery.add(disjunctionQuery);
 		}
 		return dynamicQuery;
@@ -134,9 +140,15 @@ public class RegisterUserLocalServiceImpl extends RegisterUserLocalServiceBaseIm
 		registerUser.setEmail(emailInput);
 		registerUser.setQuestionType(questionTypeInput);
 		registerUser.setDescription(descriptionInput);
+		registerUser.setModifiedDate(serviceContext.getModifiedDate(new Date()));
 		registerUser = super.updateRegisterUser(registerUser);
 		return registerUser;
 		
 	}
+   
+   @Override
+   public List<RegisterUser> findByName(String name) {
+     return registerUserPersistence.findByName(name);
+     }
 
 }

@@ -53,16 +53,14 @@ public class RegisterUserServiceUtil {
 			serviceContext);
 	}
 
-	public static RegisterUser addRegisterUser(RegisterUser registerUser)
-		throws PortalException {
-
-		return getService().addRegisterUser(registerUser);
-	}
-
 	public static RegisterUser deleteRegisterUser(long registerUserId)
 		throws PortalException {
 
 		return getService().deleteRegisterUser(registerUserId);
+	}
+
+	public static List<RegisterUser> findByName(String name) {
+		return getService().findByName(name);
 	}
 
 	/**

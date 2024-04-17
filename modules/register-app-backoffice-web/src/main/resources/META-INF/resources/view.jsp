@@ -6,6 +6,16 @@
 		<b><liferay-ui:message key="registerappbackofficeweb.caption"/></b>
 	</p>
 	
+	<%-- Clay management toolbar. --%>
+
+	<clay:management-toolbar
+		disabled="${registerUserCount eq 0}"
+		displayContext="${registerUsersManagementToolbarDisplayContext}"
+		itemsTotal="${registerUserCount}"
+		searchContainerId="registerUserEntries"
+		selectable="false"
+	/>
+	
 	<%-- Search container. --%>
 
 	<liferay-ui:search-container 

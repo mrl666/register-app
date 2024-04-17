@@ -16,3 +16,9 @@
 <liferay-theme:defineObjects />
 
 <portlet:defineObjects />
+
+<%
+    String targetPortletNamespace = renderResponse.getNamespace();
+	System.out.println(targetPortletNamespace);
+%>
+

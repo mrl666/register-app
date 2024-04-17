@@ -45,19 +45,18 @@ public class RegisterUserServiceWrapper
 	}
 
 	@Override
-	public register.app.backend.model.RegisterUser addRegisterUser(
-			register.app.backend.model.RegisterUser registerUser)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		return _registerUserService.addRegisterUser(registerUser);
-	}
-
-	@Override
 	public register.app.backend.model.RegisterUser deleteRegisterUser(
 			long registerUserId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _registerUserService.deleteRegisterUser(registerUserId);
+	}
+
+	@Override
+	public java.util.List<register.app.backend.model.RegisterUser> findByName(
+		String name) {
+
+		return _registerUserService.findByName(name);
 	}
 
 	/**

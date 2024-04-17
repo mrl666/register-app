@@ -216,6 +216,8 @@ public interface RegisterUserLocalService
 	public RegisterUser fetchRegisterUserByUuidAndGroupId(
 		String uuid, long groupId);
 
+	public List<RegisterUser> findByName(String name);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 

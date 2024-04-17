@@ -250,6 +250,13 @@ public class RegisterUserLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<register.app.backend.model.RegisterUser> findByName(
+		String name) {
+
+		return _registerUserLocalService.findByName(name);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

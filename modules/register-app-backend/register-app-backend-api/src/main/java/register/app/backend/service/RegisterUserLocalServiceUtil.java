@@ -229,6 +229,10 @@ public class RegisterUserLocalServiceUtil {
 		return getService().fetchRegisterUserByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<RegisterUser> findByName(String name) {
+		return getService().findByName(name);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
