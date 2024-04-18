@@ -34,7 +34,7 @@ import register.app.backoffice.web.constants.RegisterAppBackofficeWebPortletKeys
 		}, 
 		service = MVCRenderCommand.class
 	)
-public class ViewRegisterUserMVCRenderCommand implements MVCRenderCommand {
+public class ViewRegisterUsersMVCRenderCommand implements MVCRenderCommand {
 
 	@Override
 	public String render(

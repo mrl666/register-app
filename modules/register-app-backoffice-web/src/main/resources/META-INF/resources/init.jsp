@@ -22,6 +22,8 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <%@ taglib prefix="clay" uri="http://liferay.com/tld/clay" %>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <liferay-theme:defineObjects />
 
 <portlet:defineObjects />
