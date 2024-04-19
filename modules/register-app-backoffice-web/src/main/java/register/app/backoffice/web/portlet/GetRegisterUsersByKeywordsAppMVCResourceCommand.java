@@ -68,6 +68,12 @@ public class GetRegisterUsersByKeywordsAppMVCResourceCommand extends BaseMVCReso
           jsonObject.put("userId", user.getUserId());
           jsonObject.put("name", user.getName());
           jsonObject.put("nationalId", user.getNationalId());
+          jsonObject.put("surname", user.getSurname());
+          jsonObject.put("lastname", user.getLastname());
+          jsonObject.put("email", user.getEmail());
+          jsonObject.put("description", user.getDescription());
+          jsonObject.put("author", user.getUserId());
+          jsonObject.put("createDate", user.getCreateDate());
           jsonArray.put(jsonObject);
       }
 
