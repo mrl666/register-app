@@ -15,22 +15,26 @@
 		test='${registerUsersManagementToolbarDisplayContext.getDisplayStyle().equals("list")}'>
 
 		<%-- User --%>
-
-		<liferay-ui:search-container-column-text name="name"
+		
+		<liferay-ui:search-container-column-text name="id" 
+			cssClass="content-column description-column" value="${entry.registerUserId}" 
+			orderable="true" orderableProperty="registerUserId" property="registerUserId" />
+		
+		<liferay-ui:search-container-column-text name="First Name" href="${portletURL}"
 			cssClass="content-column name-column title-column"
 			value="${entry.name}" orderable="true" 
 			property="name"
 			orderableProperty="name" />
 
-		<liferay-ui:search-container-column-text name="Surname"
+		<liferay-ui:search-container-column-text name="Surname" 
 			cssClass="content-column description-column" value="${entry.surname}" 
 			orderable="true" orderableProperty="surname" property="surname" />
 
-		<liferay-ui:search-container-column-text name="Lastname"
+		<liferay-ui:search-container-column-text name="Last Name"
 			cssClass="content-column description-column" value="${entry.lastname}" 
 			orderable="true" orderableProperty="lastname" property="lastname" />
 
-		<liferay-ui:search-container-column-text name="email"
+		<liferay-ui:search-container-column-text name="Email"
 			cssClass="content-column email-column" value="${entry.email}" 
 			orderable="true" orderableProperty="email" property="email" />
 
@@ -39,18 +43,18 @@
 			value="${entry.nationalId}" orderable="true" 
 			orderableProperty="nationalId" property="nationalId" />
 
-		<liferay-ui:search-container-column-text name="description"
+		<liferay-ui:search-container-column-text name="Description"
 			cssClass="content-column description-column"
 			value="${entry.description}" orderable="true" 
 			orderableProperty="description" property="description" />
 
-		<liferay-ui:search-container-column-user name="author"
+		<liferay-ui:search-container-column-user name="Author"
 			cssClass="content-column author-column" userId="${entry.userId}" 
-			orderable="true" orderableProperty="name" />
+			orderable="true" orderableProperty="userId" property="userId" />
 
 		<liferay-ui:search-container-column-date name="create-date"
 			cssClass="create-date-column text-column" property="createDate" 
-			orderable="true" orderableProperty="name" />
+			orderable="true" orderableProperty="createDate" />
 
 		<liferay-ui:search-container-column-jsp cssClass="entry-action-column"
 			path="/entry_actions.jsp" />

@@ -43,14 +43,18 @@
 	<%-- Search container. --%>
 
 	<liferay-ui:search-container 
+		delta="5"
+		deltaConfigurable="true"
 		emptyResultsMessage="no-users"
 		id="registerUserEntries"
 		iteratorURL="${portletURL}" 
-		total="${registerUserCount}">
+		total="${registerUserCount}"
+		rowChecker="<%=new RowChecker(renderResponse) %>">
 
 		<liferay-ui:search-container-results results="${registerUsers}" />
 
 		<liferay-ui:search-container-row
+			keyProperty = "registerUserId"
 			className="register.app.backend.model.RegisterUser"
 			modelVar="entry">
 
@@ -65,10 +69,10 @@
 			markupView="lexicon" 
 		/>
 	</liferay-ui:search-container>
-		
+
 </div>
 
-<script>
+<aui:script>
 	//AJAX request to server resource with the search term
 	$(document).ready(function() {
 		$('#searchButton').click(function() {
@@ -153,7 +157,8 @@
 					</div>
 					</div>`;
 								
-					$('#_register_app_backoffice_web_RegisterAppBackofficeWebPortlet_INSTANCE_udsl_registerUserEntries').html(header + rows + footer);					
+					$('#_register_app_backoffice_web_RegisterAppBackofficeWebPortlet_INSTANCE_udsl_registerUserEntries').html(header + rows + footer);
+					//AUI().one('#_register_app_backoffice_web_RegisterAppBackofficeWebPortlet_INSTANCE_udsl_registerUserEntries').hmtl(header + rows + footer);					
 				} 
 			});
 		});
@@ -204,4 +209,6 @@
 	        $('#searchInput').val('');
 	    });
 	});
-</script>
+	
+		
+</aui:script>
